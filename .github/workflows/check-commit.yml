@@ -1,7 +1,7 @@
 name: check-commit
 
 on:
-  push
+  push:
   schedule:
       - cron: '0 8 * * *'
 
