@@ -1,0 +1,56 @@
+name: check-commit
+
+on:
+  push
+  schedule:
+      - cron: '0 8 * * *'
+
+jobs:
+  check-commit:
+
+    runs-on: ubuntu-latest
+
+    services:
+      recap_dev_express_mysql:
+        container_name: recap_dev_express_mysql
+        image: mysql:5.7.31
+        volumes:
+          - db_data:/var/lib/mysql
+
+        environment:
+          MYSQL_DATABASE: 'recap-dev-test-db'
+          MYSQL_USER: 'user'
+          MYSQL_PASSWORD: 'password'
+          MYSQL_ROOT_PASSWORD: 'password'
+        ports:
+          - "8001:3306"
+        restart: unless-stopped
+
+      recap_dev_express_postgres:
+        container_name: recap_dev_express_postgres
+        image: postgres
+        environment:
+          POSTGRES_USER: 'postgres'
+          POSTGRES_PASSWORD: 'password'
+          PGDATA: /data/postgres
+        volumes:
+          - postgres:/data/postgres
+        ports:
+          - "8002:5432"
+        restart: unless-stopped
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+      - name: install dependencies
+        run: yarn
+      - name: lint
+        run: yarn lint
+      - name: tsc
+        run: yarn tsc
+      - name: build
+        run: yarn build:prod
+      - name: start server
+        run: node dist/index.js &
+      - name: run tests
+        run: yarn test
