@@ -1073,14 +1073,14 @@
   dependencies:
     lodash.get "^4.4.2"
 
-"@recap.dev/client@^1.7.0":
-  version "1.7.0"
-  resolved "https://registry.yarnpkg.com/@recap.dev/client/-/client-1.7.0.tgz#77c8b23fa65a056fa80218a8a61b36855064fdbc"
-  integrity sha512-AlsrvSs3YZLBp8ztfsHHOd7Xfy3T5jBUdVH6N26cio3qbNgz/5I6RVuRoVJPI8z7TZvC92rSJSf6C5mQ3nUbGw==
+"@recap.dev/client@^1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@recap.dev/client/-/client-1.7.1.tgz#6cab5b18eac8baa94855bce61aa52c8077aa9318"
+  integrity sha512-rKpR7GGgjpKWzJU6ATk/yL1TrwXhfk9Zv4JBTOZKksV0S/1EqUsNvxsEpLwc+Ec3FFznTV4dO7WHytADUt2xbA==
   dependencies:
     lodash-es "^4.17.15"
     node-fetch "^2.6.0"
-    node-sql-parser "^1.9.1"
+    node-sql-parser "^3.1.0"
     serialize-error "^6.0.0"
     shimmer "^1.2.1"
     uuid "^8.3.0"
@@ -5399,10 +5399,10 @@ node-releases@^1.1.61:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.61.tgz#707b0fca9ce4e11783612ba4a2fcba09047af16e"
   integrity sha512-DD5vebQLg8jLCOzwupn954fbIiZht05DAZs0k2u8NStSe6h9XdsuIQL8hSRKYiU8WUQRznmSDrKGbv3ObOmC7g==
 
-node-sql-parser@^1.9.1:
-  version "1.11.0"
-  resolved "https://registry.yarnpkg.com/node-sql-parser/-/node-sql-parser-1.11.0.tgz#7f4a497f54befe341cbc0d9b916877471e182b76"
-  integrity sha512-lvXZ0fPh3J0bQ2/GHyVEqZ8k732SdLInTahkoUaPYYnYH0zp0XSprjyXkbt6TbA0ujLl1lp+wGnlJFINRWJ/ww==
+node-sql-parser@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/node-sql-parser/-/node-sql-parser-3.1.0.tgz#997e51581e89a218a91cabc2e863b072b5f9969f"
+  integrity sha512-bm1vct9T8EtPi4/z8GA/UbN/xEwfUQsqhvmgnwyNMRSiQ4jvukCE4Esl363HbnBnXFhc5T4V9DuO29pWtC0q6w==
   dependencies:
     big-integer "^1.6.48"
 
