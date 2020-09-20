@@ -52,5 +52,8 @@ jobs:
         run: yarn build:prod
       - name: start server
         run: node dist/index.js &
+        env:
+          RECAP_DEV_SYNC_ENDPOINT: ${{ secrets.RECAP_DEV_SYNC_ENDPOINT }}
+          RECAP_DEV_APP_NAME: 'dev-express-example-project'
       - name: run tests
         run: yarn test
