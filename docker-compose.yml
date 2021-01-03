@@ -29,6 +29,13 @@ services:
       - "8002:5432"
     restart: unless-stopped
 
+  recap_dev_express_mongodb:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+
+
 volumes:
   db_data: {}
   postgres:

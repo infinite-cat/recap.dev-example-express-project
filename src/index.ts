@@ -2,9 +2,11 @@ import { config } from 'dotenv'
 import { traceExpress, tracer, captureConsoleLogs } from '@recap.dev/client'
 import express from 'express'
 import { getConnection } from 'typeorm'
+import mongoose from 'mongoose'
+
 import { catFactsService } from './services/cat-facts-service'
 import { createMysqlConnection, createPgConnection } from './db'
-import { Post } from './db/entities'
+import { Post, Cat } from './db/entities'
 import { authService } from './services/auth-service'
 
 config()
@@ -44,13 +46,23 @@ app.get('/trace-pg-access', async (req, res) => {
   res.json([post1, post2])
 })
 
+app.get('/trace-mongodb-access', async (req, res) => {
+  tracer.setUnitName('dev-trace-mongodb-access')
+
+  const kitty = new Cat({ name: 'Zildjian' })
+  await kitty.save()
+
+  const cats = await Cat.find()
+  res.json(cats)
+})
+
 app.get('/trace-error', (req, res, next) => {
   tracer.setUnitName('dev-error')
   res.sendStatus(500)
   next(new Error('test error'))
 })
 
-Promise.all([createPgConnection(), createMysqlConnection()]).then(() => {
+Promise.all([createPgConnection(), createMysqlConnection(), mongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true, useUnifiedTopology: true })]).then(() => {
   app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
   })

@@ -29,6 +29,11 @@ jobs:
         ports:
           - "8002:5432"
 
+      recap_dev_express_mongo:
+        image: mongo
+        ports:
+          - "27017:27017"
+
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-node@v1
