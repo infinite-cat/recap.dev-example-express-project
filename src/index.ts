@@ -26,6 +26,10 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.post('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 app.get('/trace-http-request', async (req, res) => {
   tracer.setUnitName('dev-get-cat-facts')
   const fact = await catFactsService.getFact()
